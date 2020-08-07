@@ -40,7 +40,7 @@ class UserController extends Controller
     
     public function store(Request $request)
     {
-        $datosusers=request()->except('_token');
+         $datosusers=request()->except('_token');
         User::insert($datosusers);
        // return response()->json($datosusers);
 
@@ -64,7 +64,7 @@ class UserController extends Controller
     public function update(UserFormRequest $request, $id)
     {
 
-      $usuarios = User::findOrFail($id);   
+     $usuarios = User::findOrFail($id);   
       $usuarios->name = $request->get('name');
       $usuarios->email = $request->get('email');
 

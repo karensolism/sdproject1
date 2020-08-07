@@ -1,1 +1,0 @@
-tipoinmuebles.blade.php

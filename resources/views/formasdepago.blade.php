@@ -1,1 +1,0 @@
-formasdepago.blade.php

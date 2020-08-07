@@ -1,1 +1,0 @@
-indexModelo.blade.php
