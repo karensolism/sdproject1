@@ -1,0 +1,1 @@
+indexEmpresa.blade.php

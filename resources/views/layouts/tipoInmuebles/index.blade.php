@@ -1,0 +1,1 @@
+indexTipoInmueble.blade.php
