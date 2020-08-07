@@ -43,7 +43,7 @@
                 <!-- SEARCH FORM -->
                 <form class="form-inline ml-3">
                     <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                        <input class="form-control form-control-navbar"  name="search"  type="search" placeholder="Buscar"
                             aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit">
@@ -200,6 +200,7 @@
                             </li>
 
                             <li class="nav-item">
+                                <!--enlace a usuarios-->
                                 <a href="{{url('usuarios')}}"
                                     class="{{ Request::path() === 'usuarios' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-users"></i>

@@ -7,11 +7,24 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        //muestra lista de registros    
-     $users = User::all();
-    return view('usuarios', ['users' =>$users]);
+      //search es el nombre del navbar en app.blade
+      $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+        $users= User::where('name', 'LIKE', '%'.$query.'%' )
+        ->orderBy('id', 'asc')
+        ->get();
+
+         return view('usuarios', ['users' =>$users, 'search' => $query]);
+      }
+
+        //muestra lista de registros   
+
+     //$users = User::all();
+    //return view('usuarios', ['users' =>$users]);
   
     }
      
@@ -37,21 +50,18 @@ class UserController extends Controller
    
     public function show($id)
     {
-        //
+        return view('layouts/usuarios/show', ['user'=> User::findOrFail($id)]);
     }
 
     
     public function edit($id)
     {
-       // $datosusers = User::findOrFail($id);
-        //return view('usuarios.create', compact('datosusers'));
-
-       // return view('layouts/usuarios/edit');
-       return view('usuarios.edit', ['user'=> User::findOrFail($id)]);
+      
+       return view('layouts/usuarios/edit', ['user'=> User::findOrFail($id)]);
     }
 
     
-    public function update(Request $request, $id)
+    public function update(UserFormRequest $request, $id)
     {
 
      $usuarios = User::findOrFail($id);   
@@ -66,7 +76,10 @@ class UserController extends Controller
     
     public function destroy($id)
     {
-        //User::destroy($id);
-          // return view('usuarios/create');
+        $usuario= User::findOrFail($id);
+
+        $usuario->delete();
+
+        return redirect('/usuarios'); 
     }
 }
