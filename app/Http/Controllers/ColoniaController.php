@@ -18,11 +18,11 @@ class ColoniaController extends Controller
       if ($request) {
 
         //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
-        $ciudades= Colonia::where('Colonia', 'LIKE', '%'.$query.'%' )
+        $colonias= Colonia::where('Colonia', 'LIKE', '%'.$query.'%' )
         ->orderBy('Id_colonia', 'asc')
         ->get();
 
-         return view('ciudad', ['ciudads' =>$ciudades, 'search' => $query]);
+         return view('colonias', ['colonias' =>$colonias, 'search' => $query]);
     }
 
     /**
@@ -32,7 +32,7 @@ class ColoniaController extends Controller
      */
     public function create()
     {
-         return view('layouts/ciudades/create')
+         return view('layouts/colonias/create');
     }
 
     /**
@@ -43,10 +43,10 @@ class ColoniaController extends Controller
      */
     public function store(Request $request)
     {
-        $datosciudades=request()->except('_token');
-        Ciudad::insert($datosciudades);
+        $datoscolonias=request()->except('_token');
+        Colonia::insert($datoscolonias);
      
-        return redirect('ciudad');
+        return redirect('colonias');
     }
 
     /**
@@ -55,9 +55,9 @@ class ColoniaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_ciudad)
+    public function show($Id_colonia)
     {
-       return view('layouts/ciudades/show', ['ciudad'=> Ciudad::findOrFail($id_ciudad)]);
+       return view('layouts/Colonias/show', ['Colonias'=> Colonia::findOrFail($Id_colonia)]);
     }
 
     /**
@@ -66,9 +66,9 @@ class ColoniaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_ciudad)
+    public function edit($Id_colonia)
     {
-        return view('layouts/ciudades/edit', ['ciudad'=> Ciudad::findOrFail($id_ciudad)]);
+        return view('layouts/Colonias/edit', ['Colonias'=> Colonia::findOrFail($Id_colonia)]);
     }
 
     /**
@@ -78,10 +78,10 @@ class ColoniaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_ciudad)
+    public function update(Request $request, $Id_colonia)
     {
-      $Ciudades = Ciudad::findOrFail($Id_asesor);   
-      $Ciudades->ciudad = $request->get('Ciudad');
+      $Colonias = Colonia::findOrFail($Id_colonia);   
+      $Colonias->Colonia = $request->get('Colonia');
     
     }
 
@@ -91,11 +91,11 @@ class ColoniaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_ciudad)
+    public function destroy($Id_colonia)
     {
-        $ciudad= Ciudad::findOrFail($id_ciudad);
-        $ciudad->delete();
+        $Colonia= Colonia::findOrFail($Id_colonia);
+        $Colonia->delete();
 
-        return redirect('ciudad'); 
+        return redirect('colonias'); 
     }
 }

@@ -33,7 +33,7 @@ class CiudadController extends Controller
      */
     public function create()
     {
-         return view('layouts/ciudades/create')
+         return view('layouts/ciudades/create');
     }
 
     /**
@@ -81,7 +81,7 @@ class CiudadController extends Controller
      */
     public function update(Request $request, $id_ciudad)
     {
-      $Ciudades = Ciudad::findOrFail($Id_asesor);   
+      $Ciudades = Ciudad::findOrFail($id_ciudad);   
       $Ciudades->ciudad = $request->get('Ciudad');
     
     }

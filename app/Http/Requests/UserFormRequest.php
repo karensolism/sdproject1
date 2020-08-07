@@ -29,7 +29,7 @@ class UserFormRequest extends FormRequest
         'email' => 'required|email|max:255|unique',
         //minimo 6 caracteres
         'password'=> 'min:6|confirmed'
-        'password_confirm' => 'same:password'
+          // 'password_confirm' => 'same:password'
     ];
     }
 }

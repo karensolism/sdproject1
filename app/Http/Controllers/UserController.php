@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserFormRequest;
 
 class UserController extends Controller
 {
@@ -61,10 +62,10 @@ class UserController extends Controller
     }
 
     
-    public function update(UserFormRequest $request, $id)
-    {
+    public function update(Request $request, $id)
+    {    
 
-      $usuarios = User::findOrFail($id);   
+     $usuarios = User::findOrFail($id);   
       $usuarios->name = $request->get('name');
       $usuarios->email = $request->get('email');
 

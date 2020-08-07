@@ -9,6 +9,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('usuarios', 'UserController')->middleware('auth');
 
 Route::get('/usuarios', 'UserController@index');
+
 Route::resource('asesor', 'AsesorController');
 Route::resource('ciudad', 'CiudadController');
 Route::resource('colonia', 'ColoniaController');
