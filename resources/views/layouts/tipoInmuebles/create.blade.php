@@ -1,0 +1,1 @@
+createTipoInmueble.blade.php
