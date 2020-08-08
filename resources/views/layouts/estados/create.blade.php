@@ -4,38 +4,23 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">    
-<form action="{{route('usuarios.store')}}" method="POST">
+<form action="{{route('estados.store')}}" method="POST">
 {{csrf_field()}}
-
-<div class="form-group">
-    <label for="name">Activo</label>
-    <select id="activoDesarrolladora" name="Activo">
-         <option value="1">SI</option>
-         <option value="0">NO</option>
-       </select>
-    
-  </div>
   
  <div class="form-group">
-    <label for="name">Nombre</label>
-    <input type="text" class="form-control @error('name') is-invalid @enderror" name="nombre" placeholder="Ingrese su nombre" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <label for="activo">Activo</label>
+    <input type="text" class="form-control @error('Activo') is-invalid @enderror" name="activo" placeholder="Ingrese su nombre" value="{{ old('activo') }}" required autocomplete="name" autofocus>
     
   </div>
   <div class="form-group">
-    <label for="email">Correo</label>
-    <input type="email" class="form-control @error('email') is-invalid @enderror" name="correo" placeholder="Ingrese su correo"value="{{ old('correo') }}" required autocomplete="email">
+    <label for="estado">Estado</label>
+    <input type="text" class="form-control @error('Estado') is-invalid @enderror" name="estado" placeholder="Ingrese su email"value="{{ old('Estado') }}" required autocomplete="estado">
 
     
   </div>
   <div class="form-group">
-    <label for="telefono">Teléfono</label>
-    <input type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" required autocomplete="telefono" value="{{ old('telefono') }}">
-  </div>
-
- <div class="form-group">
-    <label for="name">Logo</label>
-    <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo"  value="{{ old('logo') }}" autofocus>
-    
+    <label for="password">Contraseña</label>
+    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Ingrese una Contraseña">
   </div>
   
     

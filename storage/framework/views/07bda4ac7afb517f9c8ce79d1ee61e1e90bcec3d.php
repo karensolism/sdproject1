@@ -140,8 +140,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            
-                                  <a class="btn btn-link" href="<?php echo e(route('register')); ?>">
+                            <a class="btn btn-link" href="<?php echo e(route('register')); ?>">
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
                         </div>
                         <!-- /.col -->

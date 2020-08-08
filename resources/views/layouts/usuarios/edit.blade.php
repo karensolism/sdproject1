@@ -4,6 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
+           <!--muestra el nombre del usuario en el formulario-->
       <h3>Editar usuario: {{ $user->name}}</h3>
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -31,8 +32,8 @@
     
   </div>
   
-  <button type="submit" class="btn btn-primary">Guardar cambios</button>
-  <button type="reset" class="btn btn-danger">Cancelar</button>
+  <button type="submit" class="btn btn-primary">Guardar cambios</button> 
+   <a href="/usuarios"><button type="button" class="btn btn-danger">Cancelar</button></a>
 </form>
 </div>
 </div>

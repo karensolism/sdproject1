@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserFormRequest;
 
 class UserController extends Controller
 {
@@ -40,7 +41,7 @@ class UserController extends Controller
     
     public function store(Request $request)
     {
-         $datosusers=request()->except('_token');
+        $datosusers=request()->except('_token');
         User::insert($datosusers);
        // return response()->json($datosusers);
 
@@ -61,8 +62,8 @@ class UserController extends Controller
     }
 
     
-    public function update(UserFormRequest $request, $id)
-    {
+    public function update(Request $request, $id)
+    {    
 
      $usuarios = User::findOrFail($id);   
       $usuarios->name = $request->get('name');

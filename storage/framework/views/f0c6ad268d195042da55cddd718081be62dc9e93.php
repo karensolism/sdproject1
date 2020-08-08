@@ -273,29 +273,29 @@
                                     <p>Gestión Dirección<i class="fas fa-angle-left right"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="<?php echo e(Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link'); ?>">
-                                            <i class="far fa-circle nav-icon"></i>
+                                    <li class="nav-item">><a href="Estado"></li>                            
+                                         <i class="far fa-circle nav-icon"></i>
                                             <p>Estado</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="<?php echo e(Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="ciudades"
+                                            class="<?php echo e(Request::path() === 'ciudades/index' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Ciudad</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/archivadas"
-                                            class="<?php echo e(Request::path() === 'notas/archivadas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="colonias"
+                                            class="<?php echo e(Request::path() === 'colonias/index' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Colonia</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
+
+                         
                             <!--Gestion de Extras-->
                              <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
@@ -349,6 +349,30 @@
                                     </li>
                                 </ul>
                             </li>
+                                <!--Seccion Direccion-->
+                             <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon far fa-sticky-note"></i>
+                                    <p>Seccion Direccion<i class="fas fa-angle-left right"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Direccion/Estado"
+                                            class="<?php echo e(Request::path() === '/Direccion/Estado' ? 'nav-link active' : 'nav-link'); ?>">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Estado</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/Direccion/Ciudad"
+                                            class="<?php echo e(Request::path() === '/Direccion/Ciudad' ? 'nav-link active' : 'nav-link'); ?>">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Ciudad</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
 
                         </ul>
                     </nav>
