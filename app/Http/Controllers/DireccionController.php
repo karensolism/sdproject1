@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+
 class DireccionController extends Controller
 {
-    //
-    public function Estado()
+    public function estados()
     {
-    	return 'Seccion estado';
+    	return view('layouts/direccion/estados');
+    	//return 'seccion'
     }
 }
