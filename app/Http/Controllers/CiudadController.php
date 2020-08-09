@@ -22,11 +22,7 @@ class CiudadController extends Controller
         $ciudades= Ciudad::where('Ciudad', 'LIKE', '%'.$query.'%' )
         ->orderBy('id_ciudad', 'asc')
         ->get();
-
-
-         return view('ciudad', ['ciudads' =>$ciudades, 'search' => $query]);
-     }
-   
+     
          return view('ciudades', ['ciudades' =>$ciudades, 'search' => $query]);
      }
 

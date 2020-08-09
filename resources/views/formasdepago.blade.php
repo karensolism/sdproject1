@@ -24,7 +24,7 @@
     <tr>
      
       <th scope="row">{{$forma->Id_forma}}</th>
-      <td>{{$forma->Forma}}</td>
+      <td>{{$forma->forma}}</td>
  
 
       <td> 

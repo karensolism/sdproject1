@@ -2,7 +2,7 @@
 
 @section ('content')
 <div class="container">
-  <h2>ciudades registrados <a href="{{route('ciudad.create')}}"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
+  <h2>ciudades registradas <a href="{{route('ciudad.create')}}"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
 
  <h6>
   @if($search)
@@ -18,6 +18,7 @@
       <th scope="col">#</th>
       <th scope="col">Ciudad</th>
       <th scope="col">Estado</th>
+      <th scope="col">Opciones </th>
 
      
     </tr>
@@ -33,7 +34,7 @@
 
       <td> 
         <form action="{{ route('ciudad.destroy', $ciudad->id_ciudad) }}" method="POST">
-          <a href="{{route('ciudad.show', $ciudad->id_ciudad)}}"> <button type="button" class="btn btn-light">Ver</button></a>
+          
         <!--referencia al metodo del controlador-->
         <a href="{{route('ciudad.edit', $ciudad->id_ciudad)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
        <!--formulario que lleva al metodo destroy-->

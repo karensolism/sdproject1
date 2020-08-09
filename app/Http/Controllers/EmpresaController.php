@@ -45,11 +45,19 @@ class EmpresaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-         $datosempresa=request()->except('_token');
+    {         
+
+
+          $datosempresa=request()->except('_token');
         Empresa::insert($datosempresa);
+
+        if($request->hasFile('Logo_emp'))
+        {
+            $datosempresa['Logo_emp'] = $request->file('Logo_emp')->store('uploads/empresa', 'public');
+        }
      
-        return redirect('empresas');
+        return redirect('
+            empresas');
     }
 
     /**

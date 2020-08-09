@@ -2,7 +2,7 @@
 
 @section ('content')
 <div class="container">
-  <h2>Asesores registrados <a href="{{route('empresa.create')}}"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
+  <h2>Empresas registradas <a href="{{route('empresa.create')}}"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
 
  <h6>
   @if($search)

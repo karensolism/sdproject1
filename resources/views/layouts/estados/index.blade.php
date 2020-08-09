@@ -9,7 +9,7 @@
       <th scope="col">#</th>
       <th scope="col">Activo</th>
       <th scope="col">Estado</th>
-  
+    <th scope="col">Opciones</th>
      
     </tr>
   </thead>
@@ -24,7 +24,7 @@
       <td>
         <button type="button" class="btn btn-light">Ver</button>
         <!--referencia al metodo del controlador-->
-        <a href="{{route('estados/edit', $estados->id)}}"/a><button type="button" class="btn btn-primary">Editar</button>
+        <a href="{{route('estados.edit', $estados->id)}}"/a><button type="button" class="btn btn-primary">Editar</button>
         <!--formulario que lleva al metodo destroy-->
         <form action="{{ route('estados.destroy', $user-> id) }}" method="POST">
           @csrf

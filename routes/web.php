@@ -14,11 +14,9 @@ Route::get('/', function () {
 Route::resource('usuarios', 'UserController')->middleware('auth');
 
 Route::get('/usuarios', 'UserController@index');
-//linea para usar todos los metodos del controlador
-Route::get('/estados','EstadoController@index');
-Route::get('/direccion, DireccionController@estados');
-//Route::get('/direccion, DireccionController@colonias');
-//Route::get('/direccion, DireccionController@ciudades');
+
+Route::resource('estados','EstadoController');
+
 
 Route::resource('asesor', 'AsesorController');
 Route::resource('ciudad', 'CiudadController');

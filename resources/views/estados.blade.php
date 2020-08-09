@@ -22,18 +22,19 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($estados as $estados)
+<!-- traido del controlador para retornar a la vista-->
+    @foreach($estados as $estado)
     <tr>
      
-      <th scope="row">{{$estados->Id_estado}}</th>
-      <td>{{$estados->Activo}}</td>
-      <td>{{$estados->Estado}}</td>
+      <th scope="row">{{$estado->Id_estado}}</th>
+      <td>{{$estado->Activo}}</td>
+      <td>{{$estado->Estado}}</td>
 
       <td> 
-        <form action="{{route('estados.destroy', $estados->Id_estado) }}" method="POST">
-          <a href="{{route('estados.show', $estados->Id_estado)}}"> <button type="button" class="btn btn-light">Ver</button></a>
+        <form action="{{route('estados.destroy', $estado->Id_estado) }}" method="POST">
+          <a href="{{route('estados.show', $estado->Id_estado)}}"> <button type="button" class="btn btn-light">Ver</button></a>
         <!--referencia al metodo del controlador-->
-        <a href="{{route('estados.edit', $estados->Id_estado)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
+        <a href="{{route('estados.edit', $estado->Id_estado)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
        <!--formulario que lleva al metodo destroy-->
           @csrf
           @method('DELETE')
