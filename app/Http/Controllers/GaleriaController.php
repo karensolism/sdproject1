@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Galeria;
 
 class GaleriaController extends Controller
 {
@@ -11,9 +12,18 @@ class GaleriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+           $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+        $ciudades= Galeria::where('Id_foto', 'LIKE', '%'.$query.'%' )
+        ->orderBy('Id_foto', 'asc')
+        ->get();
+
+         return view('galeria', ['galerias' =>$ciudades, 'search' => $query]);
+     }
     }
 
     /**
@@ -23,7 +33,7 @@ class GaleriaController extends Controller
      */
     public function create()
     {
-        //
+         return view('layouts/aleria/create');
     }
 
     /**
@@ -34,7 +44,16 @@ class GaleriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosgaleria=request()->except('_token');
+        Galeria::insert($datosgaleria);
+
+        if($request->hasFile('Foto'))
+        {
+            $datosgaleria['Foto'] = $request->file('Foto')->store('uploads/galeria', 'public');
+        }
+     
+        return redirect('
+            galeria');
     }
 
     /**
@@ -43,9 +62,9 @@ class GaleriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($Id_foto)
     {
-        //
+       return view('layouts/galeria/show', ['galerias'=> Galeria::findOrFail($Id_Galeria)]);
     }
 
     /**
@@ -54,9 +73,9 @@ class GaleriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Id_foto)
     {
-        //
+        return view('layouts/galeria/edit', ['galerias'=> Galeria::findOrFail($Id_foto)]);
     }
 
     /**
@@ -66,9 +85,12 @@ class GaleriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Id_foto)
     {
-        //
+      $Galeria = Galeria::findOrFail($Id_foto);   
+      $Galeria->foto = $request->get('Foto');
+     
+    
     }
 
     /**
@@ -77,8 +99,11 @@ class GaleriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Id_foto)
     {
-        //
+        $Galeria= Galeria::findOrFail($Id_foto);
+        $Galeria->delete();
+
+        return redirect('galeria'); 
     }
 }

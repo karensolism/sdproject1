@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tipoprecio;
 
 class TipodeprecioController extends Controller
 {
@@ -11,9 +12,19 @@ class TipodeprecioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+           $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+        $Tipoprecio= Tipoprecio::where('Tipo', 'LIKE', '%'.$query.'%' )
+        ->orderBy('id_tipoPrecio', 'asc')
+        ->get();
+
+         return view('tiposdeprecio', ['tipoprecios' =>$Tipoprecio, 'search' => $query]);
+     }
+
     }
 
     /**
@@ -23,7 +34,7 @@ class TipodeprecioController extends Controller
      */
     public function create()
     {
-        //
+         return view('layouts/tipoprecios/create');
     }
 
     /**
@@ -34,7 +45,10 @@ class TipodeprecioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datostipo=request()->except('_token');
+        Tipoprecio::insert($datostipo);
+     
+        return redirect('tipodeprecio');
     }
 
     /**
@@ -43,9 +57,9 @@ class TipodeprecioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_tipoPrecio)
     {
-        //
+       return view('layouts/Tipoprecios/show', ['Tipoprecios'=> Tipoprecio::findOrFail($id_tipoPrecio)]);
     }
 
     /**
@@ -54,9 +68,9 @@ class TipodeprecioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_tipoPrecio)
     {
-        //
+        return view('layouts/tipoprecios/edit', ['tipoprecios'=> Tipoprecio::findOrFail($id_tipoPrecio)]);
     }
 
     /**
@@ -66,9 +80,12 @@ class TipodeprecioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_tipoPrecio)
     {
-        //
+      $Tipoprecio = Tipoprecio::findOrFail($id_tipoPrecio);   
+      $Tipoprecio->Tipo = $request->get('Tipo');
+      
+    
     }
 
     /**
@@ -77,8 +94,11 @@ class TipodeprecioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_tipoPrecio)
     {
-        //
+        $Tipoprecio= Tipoprecio::findOrFail($id_tipoPrecio);
+        $Tipoprecio->delete();
+
+        return redirect('tipodeprecio'); 
     }
 }

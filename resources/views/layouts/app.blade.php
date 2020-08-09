@@ -194,22 +194,22 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="{{ Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('desarrolladora')}}"
+                                            class="{{ Request::path() === 'desarrolladora' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Desarrolladora</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="{{ Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('tipodeinmueble')}}"
+                                            class="{{ Request::path() === 'tipodeinmueble' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Tipo de inmueble</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/archivadas"
-                                            class="{{ Request::path() === 'notas/archivadas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('modelo')}}"
+                                            class="{{ Request::path() === 'modelo' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Modelo</p>
                                         </a>
@@ -224,50 +224,53 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="{{ Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('empresa')}}"
+                                            class="{{ Request::path() === 'empresa' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Empresa</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="{{ Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('asesor')}}"
+                                            class="{{ Request::path() === 'asesor' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Asesor</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                          
-                            <li class="nav-item has-treeview">
+                          <!--gestion de direccion -->
+                           <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon far fa-sticky-note"></i>
                                     <p>Gestión Dirección<i class="fas fa-angle-left right"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item">><a href="estados"></li>                            
-                                         <i class="far fa-circle nav-icon"></i>
+                                    <li class="nav-item">
+                                        <a href="{{url('estados')}}"
+                                            class="{{ Request::path() === 'estados' ? 'nav-link active' : 'nav-link' }}">
+                                            <i class="far fa-circle nav-icon"></i>
                                             <p>Estado</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="ciudades"
-                                            class="{{ Request::path() === 'ciudades/index' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('ciudad')}}"
+                                            class="{{ Request::path() === 'ciudad' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Ciudad</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="colonias"
-                                            class="{{ Request::path() === 'colonias/index' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('colonia')}}"
+                                            class="{{ Request::path() === 'colonia' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Colonia</p>
                                         </a>
                                     </li>
+
+
                                 </ul>
                             </li>
-
                          
                             <!--Gestion de Extras-->
                              <li class="nav-item has-treeview">
@@ -277,22 +280,22 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="{{ Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('tipodeprecio')}}"
+                                            class="{{ Request::path() === 'tipodeprecio' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Tipo de precio</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="{{ Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('servicio')}}"
+                                            class="{{ Request::path() === 'servicio' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Servicio</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/archivadas"
-                                            class="{{ Request::path() === 'notas/archivadas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('formapago')}}"
+                                            class="{{ Request::path() === 'formapago' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Forma de pago</p>
                                         </a>
@@ -307,15 +310,15 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="{{ Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('inmueble')}}"
+                                            class="{{ Request::path() === 'inmueble' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Inmueble</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="{{ Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link' }}">
+                                        <a href="{{url('galeria')}}"
+                                            class="{{ Request::path() === 'galeria' ? 'nav-link active' : 'nav-link' }}">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Galeria</p>
                                         </a>

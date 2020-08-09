@@ -12,7 +12,7 @@ class CiudadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //search es el nombre del navbar en app.blade
       $query= trim($request->get('search'));
@@ -23,8 +23,14 @@ class CiudadController extends Controller
         ->orderBy('id_ciudad', 'asc')
         ->get();
 
+
          return view('ciudad', ['ciudads' =>$ciudades, 'search' => $query]);
      }
+   
+         return view('ciudades', ['ciudades' =>$ciudades, 'search' => $query]);
+     }
+
+
     }
 
     /**
@@ -48,7 +54,7 @@ class CiudadController extends Controller
         $datosciudades=request()->except('_token');
         Ciudad::insert($datosciudades);
      
-        return redirect('ciudad');
+        return redirect('ciudades');
     }
 
     /**
@@ -98,6 +104,6 @@ class CiudadController extends Controller
         $ciudad= Ciudad::findOrFail($id_ciudad);
         $ciudad->delete();
 
-        return redirect('ciudad'); 
+        return redirect('ciudades'); 
     }
 }

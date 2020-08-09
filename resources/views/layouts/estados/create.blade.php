@@ -9,13 +9,16 @@
   
   <div class="form-group">
     <label for="activo">Activo</label>
-    <input type="text" class="form-control @error('activo') is-invalid @enderror" name="activo" placeholder="Ingrese el Estado" value="{{ old('activo') }}" required autocomplete="activo" autofocus>
+    <select id="activoCiudad" name="Activo" class="form-control @error('activo') is-invalid @enderror" value="{{ old('activo') }}" >
+         <option value="1">SI</option>
+         <option value="0">NO</option>
+    </select>
 
     
   </div>
  <div class="form-group">
     <label for="estado">Estado</label>
-    <input type="text" class="form-control @error('estado') is-invalid @enderror" name="estado" placeholder="Ingrese el Estado" value="{{ old('estado') }}" required autocomplete="estado" autofocus>
+    <input type="text" class="form-control @error('estado') is-invalid @enderror" name="Estado" placeholder="Ingrese el Estado" value="{{ old('estado') }}" required autocomplete="estado" autofocus>
     
   </div>
  

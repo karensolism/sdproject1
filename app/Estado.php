@@ -5,11 +5,29 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Estado extends Model
-{    
- protected $table= 'estados'; 
- //los campos que permiten un create se ponen todos..
- protected $fillable=["Activo', 'Estado"] ;
-  protected $primaryKey='Id_estado';
-  //fecha en la que se guardo
-  public $timestamps=false;
+{
+    
+protected $primaryKey='Id_estado';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'Activo', 'Estado',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+   
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+  
 }

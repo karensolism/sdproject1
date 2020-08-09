@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tipoinmueble;
 
 class TipodeinmuebleController extends Controller
 {
@@ -11,9 +12,18 @@ class TipodeinmuebleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+           $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+         $Tipoinmueble= Tipoinmueble::where('Tipo_inmueble', 'LIKE', '%'.$query.'%' )
+        ->orderBy('Id_tipo', 'asc')
+        ->get();
+
+         return view('tipoinmuebles', ['tipoinmuebles' =>$Tipoinmueble, 'search' => $query]);
+     }
     }
 
     /**
@@ -23,7 +33,7 @@ class TipodeinmuebleController extends Controller
      */
     public function create()
     {
-        //
+         return view('layouts/tipoinmuebles/create');
     }
 
     /**
@@ -34,7 +44,10 @@ class TipodeinmuebleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datostipo=request()->except('_token');
+        Tipoinmueble::insert($datostipo);
+     
+        return redirect('tipoinmuebles');
     }
 
     /**
@@ -43,9 +56,9 @@ class TipodeinmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($Id_tipo)
     {
-        //
+       return view('layouts/Tipoinmuebles/show', ['Tipoinmuebles'=> Tipoinmueble::findOrFail($Id_tipo)]);
     }
 
     /**
@@ -54,9 +67,9 @@ class TipodeinmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Id_tipo)
     {
-        //
+        return view('layouts/tipoinmuebles/edit', ['tipoinmuebles'=> Tipoinmueble::findOrFail($Id_tipo)]);
     }
 
     /**
@@ -66,9 +79,12 @@ class TipodeinmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Id_tipo)
     {
-        //
+      $Tipoinmueble = Tipoinmueble::findOrFail($Id_tipo);   
+      $Tipoinmueble->Tipo = $request->get('Tipo_inmueble');
+      
+    
     }
 
     /**
@@ -77,8 +93,11 @@ class TipodeinmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Id_tipo)
     {
-        //
+        $Tipoinmueble= Tipoinmueble::findOrFail($Id_tipo);
+        $Tipoinmueble->delete();
+
+        return redirect('tipoinmuebles'); 
     }
 }

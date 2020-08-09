@@ -11,7 +11,7 @@ class ColoniaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      public function index()
+      public function index(Request $request)
     {
         //search es el nombre del navbar en app.blade
       $query= trim($request->get('search'));
@@ -23,6 +23,7 @@ class ColoniaController extends Controller
         ->get();
 
          return view('colonias', ['colonias' =>$colonias, 'search' => $query]);
+     }
     }
 
     /**

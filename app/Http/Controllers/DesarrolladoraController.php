@@ -12,7 +12,7 @@ class DesarrolladoraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      public function index()
+      public function index(Request $request)
     {
         //search es el nombre del navbar en app.blade
       $query= trim($request->get('search'));
@@ -24,6 +24,7 @@ class DesarrolladoraController extends Controller
         ->get();
 
          return view('desarrolladoras', ['desarrolladoras' =>$desarrolladora, 'search' => $query]);
+     }
     }
 
     /**

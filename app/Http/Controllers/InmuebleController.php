@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Inmueble;
 
 class InmuebleController extends Controller
 {
@@ -11,9 +12,18 @@ class InmuebleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+           $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+        $Inmueble= Inmueble::where('Precio', 'LIKE', '%'.$query.'%' )
+        ->orderBy('Id_inmmueble', 'asc')
+        ->get();
+
+         return view('inmuebles', ['inmuebles' =>$Inmueble, 'search' => $query]);
+     }
     }
 
     /**
@@ -23,7 +33,7 @@ class InmuebleController extends Controller
      */
     public function create()
     {
-        //
+         return view('layouts/inmuebles/create');
     }
 
     /**
@@ -34,7 +44,10 @@ class InmuebleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosdesa=request()->except('_token');
+        Inmueble::insert($datosdesa);
+     
+        return redirect('inmuebles');
     }
 
     /**
@@ -43,9 +56,9 @@ class InmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($Id_Inmueble)
     {
-        //
+       return view('layouts/inmuebles/show', ['inmuebles'=> Inmueble::findOrFail($Id_Inmueble)]);
     }
 
     /**
@@ -54,9 +67,9 @@ class InmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Id_Inmueble)
     {
-        //
+        return view('layouts/inmuebles/edit', ['inmuebles'=> Inmueble::findOrFail($Id_Inmueble)]);
     }
 
     /**
@@ -66,9 +79,24 @@ class InmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Id_Inmueble)
     {
-        //
+      $Inmueble = Inmueble::findOrFail($Id_Inmueble);   
+      $Inmueble->comision = $request->get('Comision');
+      $Inmueble->Latitud = $request->get('Latitud');
+      $Inmueble->Longitud = $request->get('Longitud');
+      $Inmueble->Zoom = $request->get('Zoom');
+      $Inmueble->Creacion = $request->get('Creacion');
+      $Inmueble->Descripcion = $request->get('Descripcion');
+      $Inmueble->Titulo = $request->get('Titulo');
+      $Inmueble->Precio = $request->get('Precio');
+      $Inmueble->Construccion = $request->get('Construccion');
+      $Inmueble->Terreno = $request->get('Terreno');
+      $Inmueble->Cuota_mantenimiento = $request->get('Cuota_mantenimiento');
+      $Inmueble->Fecha_entrega = $request->get('Fecha_entrega');
+      $Inmueble->Planta = $request->get('Planta');
+      $Inmueble->Equipamiento = $request->get('Equipamiento');
+      $Inmueble->Zoom = $request->get('Zoom');
     }
 
     /**
@@ -77,8 +105,11 @@ class InmuebleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Id_Inmueble)
     {
-        //
+        $Inmueble= Inmueble::findOrFail($Id_Inmueble);
+        $Inmueble->delete();
+
+        return redirect('inmuebles'); 
     }
 }
