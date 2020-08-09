@@ -2,7 +2,7 @@
 
 @section ('content')
 <div class="container">
-  <h2>Asesores registrados <a href="usuarios/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
+  <h2>Asesores registrados <a href="galeria/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
 
  <h6>
   @if($search)
@@ -16,23 +16,23 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nombre</th>
+      <th scope="col">Foto</th>
  
      
     </tr>
   </thead>
   <tbody>
-    @foreach($asesor as $asesor)
+    @foreach($galerias as $galeria)
     <tr>
      
-      <th scope="row">{{$asesor->Id_asesor}}</th>
-      <td>{{$asesor->Nombre}}</td>
+      <th scope="row">{{$asesor->id_foto}}</th>
+      <td>{{$asesor->Foto}}</td>
 
       <td> 
-        <form action="{{ route('asesor.destroy', $asesor->Id_asesor) }}" method="POST">
-          <a href="{{route('asesor.show', $asesor->Id_asesor)}}"> <button type="button" class="btn btn-light">Ver</button></a>
+        <form action="{{ route('galeria.destroy', $asesor->id_foto) }}" method="POST">
+          <a href="{{route('galeria.show', $galeria->id_foto)}}"> <button type="button" class="btn btn-light">Ver</button></a>
         <!--referencia al metodo del controlador-->
-        <a href="{{route('asesor.edit', $asesor->Id_asesor)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
+        <a href="{{route('galeria.edit', $galeria->id_foto)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
        <!--formulario que lleva al metodo destroy-->
           @csrf
           @method('DELETE')

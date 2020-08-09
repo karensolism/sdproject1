@@ -3,9 +3,12 @@
 @section ('content')
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">    
+    <div class="col-sm-6"> 
+
 <form action="{{route('usuarios.store')}}" method="POST">
 {{csrf_field()}}
+
+<script src="./path/to/dropzone.js"></script>
 
 <div class="form-group">
     <label for="name">Activo</label>
@@ -16,28 +19,9 @@
     
   </div>
   
- <div class="form-group">
-    <label for="name">Nombre</label>
-    <input type="text" class="form-control @error('name') is-invalid @enderror" name="nombre" placeholder="Ingrese su nombre" value="{{ old('name') }}" required autocomplete="name" autofocus>
-    
-  </div>
-  <div class="form-group">
-    <label for="email">Correo</label>
-    <input type="email" class="form-control @error('email') is-invalid @enderror" name="correo" placeholder="Ingrese su correo"value="{{ old('correo') }}" required autocomplete="email">
-
-    
-  </div>
-  <div class="form-group">
-    <label for="telefono">Teléfono</label>
-    <input type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" required autocomplete="telefono" value="{{ old('telefono') }}">
-  </div>
-
- <div class="form-group">
-    <label for="name">Logo</label>
-    <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo"  value="{{ old('logo') }}" autofocus>
-    
-  </div>
-  
+<form action="upload" class="dropzone" id="upload" enctype="multipart/form-data">
+      <input type="file" name="Foto[]" multiple><br/>
+      </form>
     
   <button type="submit" class="btn btn-primary">Registrar</button>
    <button type="reset" class="btn btn-danger">Cancelar</button>

@@ -14,16 +14,16 @@ class GaleriaController extends Controller
      */
     public function index(Request $request)
     {
-           $query= trim($request->get('search'));
-      if ($request) {
+        $query= trim($request->get('search'));
+        if ($request) {
 
         //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
-        $ciudades= Galeria::where('Id_foto', 'LIKE', '%'.$query.'%' )
+        $galeria= Galeria::where('Id_foto', 'LIKE', '%'.$query.'%' )
         ->orderBy('Id_foto', 'asc')
         ->get();
 
-         return view('galeria', ['galerias' =>$ciudades, 'search' => $query]);
-     }
+        return view('galeria', ['galerias' =>$galeria, 'search' => $query]);
+        }
     }
 
     /**
@@ -33,7 +33,7 @@ class GaleriaController extends Controller
      */
     public function create()
     {
-         return view('layouts/aleria/create');
+         return view('layouts/galeria/create');
     }
 
     /**
@@ -59,6 +59,7 @@ class GaleriaController extends Controller
     /**
      * Display the specified resource.
      *
+
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
