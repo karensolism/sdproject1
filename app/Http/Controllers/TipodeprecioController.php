@@ -34,7 +34,7 @@ class TipodeprecioController extends Controller
      */
     public function create()
     {
-         return view('layouts/tipoprecios/create');
+         return view('layouts/tiposdeprecio/create');
     }
 
     /**
@@ -59,7 +59,7 @@ class TipodeprecioController extends Controller
      */
     public function show($id_tipoPrecio)
     {
-       return view('layouts/Tipoprecios/show', ['Tipoprecios'=> Tipoprecio::findOrFail($id_tipoPrecio)]);
+       return view('layouts/Tiposdeprecio/show', ['Tipoprecios'=> Tipoprecio::findOrFail($id_tipoPrecio)]);
     }
 
     /**
@@ -70,7 +70,7 @@ class TipodeprecioController extends Controller
      */
     public function edit($id_tipoPrecio)
     {
-        return view('layouts/tipoprecios/edit', ['tipoprecios'=> Tipoprecio::findOrFail($id_tipoPrecio)]);
+        return view('layouts/tiposdeprecio/edit', ['tipoprecios'=> Tipoprecio::findOrFail($id_tipoPrecio)]);
     }
 
     /**
@@ -84,8 +84,10 @@ class TipodeprecioController extends Controller
     {
       $Tipoprecio = Tipoprecio::findOrFail($id_tipoPrecio);   
       $Tipoprecio->Tipo = $request->get('Tipo');
-      
+      $Tipoprecio->update();
+       return redirect('tipodeprecio'); 
     
+
     }
 
     /**

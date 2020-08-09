@@ -47,7 +47,7 @@ class ServicioController extends Controller
         $datoservicio=request()->except('_token');
         Servicio::insert($datoservicio);
      
-        return redirect('servicios');
+        return redirect('servicio');
     }
 
     /**
@@ -83,6 +83,8 @@ class ServicioController extends Controller
     {
       $Servicio = Servicio::findOrFail($Id_servicio);   
       $Servicio->Servicio = $request->get('Servicio');
+       $Servicio->update();
+       return redirect('servicio'); 
     }
 
     /**
@@ -96,6 +98,6 @@ class ServicioController extends Controller
         $Servicio= Servicio::findOrFail($Id_servicio);
         $Servicio->delete();
 
-        return redirect('servicios'); 
+        return redirect('servicio'); 
     }
 }

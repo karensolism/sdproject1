@@ -33,7 +33,7 @@ class FormadepagoController extends Controller
      */
     public function create()
     {
-          return view('layouts/formasdepagos/create');
+          return view('layouts/formasdepago/create');
     }
 
     /**
@@ -47,7 +47,7 @@ class FormadepagoController extends Controller
          $datosforma=request()->except('_token');
         Formadepago::insert($datosforma);
      
-        return redirect('formasdepago');
+        return redirect('formapago');
     }
 
     /**
@@ -96,6 +96,6 @@ class FormadepagoController extends Controller
         $Formadepago= Formadepago::findOrFail($Id_forma);
         $Formadepago->delete();
 
-        return redirect('formasdepago'); 
+        return redirect('formapago'); 
     }
 }

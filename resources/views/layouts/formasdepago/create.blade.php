@@ -4,40 +4,24 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">    
-<form action="{{route('usuarios.store')}}" method="POST">
+<form action="{{route('formapago.store')}}" method="POST">
 {{csrf_field()}}
-
-<div class="form-group">
-    <label for="name">Activo</label>
-    <select id="activoDesarrolladora" name="Activo">
+  
+  <div class="form-group">
+    <label for="activo">Activo</label>
+    <select id="activoCiudad" name="Activo" class="form-control @error('activo') is-invalid @enderror" value="{{ old('Activo') }}" >
          <option value="1">SI</option>
          <option value="0">NO</option>
-       </select>
-    
-  </div>
-  
- <div class="form-group">
-    <label for="name">Nombre</label>
-    <input type="text" class="form-control @error('name') is-invalid @enderror" name="nombre" placeholder="Ingrese su nombre" value="{{ old('name') }}" required autocomplete="name" autofocus>
-    
-  </div>
-  <div class="form-group">
-    <label for="email">Correo</label>
-    <input type="email" class="form-control @error('email') is-invalid @enderror" name="correo" placeholder="Ingrese su correo"value="{{ old('correo') }}" required autocomplete="email">
+    </select>
 
     
   </div>
-  <div class="form-group">
-    <label for="telefono">Teléfono</label>
-    <input type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" required autocomplete="telefono" value="{{ old('telefono') }}">
-  </div>
-
  <div class="form-group">
-    <label for="name">Logo</label>
-    <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo"  value="{{ old('logo') }}" autofocus>
+    <label for="estado">Forma de pago</label>
+    <input type="text" class="form-control @error('Formapago') is-invalid @enderror" name="Forma" placeholder="Ingrese la Forma de pago" value="{{ old('Forma') }}" required autocomplete="Forma de pago" autofocus>
     
   </div>
-  
+ 
     
   <button type="submit" class="btn btn-primary">Registrar</button>
    <button type="reset" class="btn btn-danger">Cancelar</button>

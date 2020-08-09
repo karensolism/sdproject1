@@ -23,7 +23,7 @@
     @foreach($formapago as $forma)
     <tr>
      
-      <th scope="row">{{$asesor->Id_forma}}</th>
+      <th scope="row">{{$forma->Id_forma}}</th>
       <td>{{$forma->Forma}}</td>
  
 
