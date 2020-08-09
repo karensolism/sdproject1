@@ -195,22 +195,22 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="<?php echo e(Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('desarrolladora')); ?>"
+                                            class="<?php echo e(Request::path() === 'desarrolladora' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Desarrolladora</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="<?php echo e(Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('tipodeinmueble')); ?>"
+                                            class="<?php echo e(Request::path() === 'tipodeinmueble' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Tipo de inmueble</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/archivadas"
-                                            class="<?php echo e(Request::path() === 'notas/archivadas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('modelo')); ?>"
+                                            class="<?php echo e(Request::path() === 'modelo' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Modelo</p>
                                         </a>
@@ -225,50 +225,53 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="<?php echo e(Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('empresa')); ?>"
+                                            class="<?php echo e(Request::path() === 'empresa' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Empresa</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="<?php echo e(Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('asesor')); ?>"
+                                            class="<?php echo e(Request::path() === 'asesor' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Asesor</p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                          
-                            <li class="nav-item has-treeview">
+                          <!--gestion de direccion -->
+                           <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon far fa-sticky-note"></i>
                                     <p>Gestión Dirección<i class="fas fa-angle-left right"></i></p>
                                 </a>
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item">><a href="estados"></li>                            
-                                         <i class="far fa-circle nav-icon"></i>
+                                    <li class="nav-item">
+                                        <a href="<?php echo e(url('estados')); ?>"
+                                            class="<?php echo e(Request::path() === 'estados' ? 'nav-link active' : 'nav-link'); ?>">
+                                            <i class="far fa-circle nav-icon"></i>
                                             <p>Estado</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="ciudades"
-                                            class="<?php echo e(Request::path() === 'ciudades/index' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('ciudad')); ?>"
+                                            class="<?php echo e(Request::path() === 'ciudad' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Ciudad</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="colonias"
-                                            class="<?php echo e(Request::path() === 'colonias/index' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('colonia')); ?>"
+                                            class="<?php echo e(Request::path() === 'colonia' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Colonia</p>
                                         </a>
                                     </li>
+
+
                                 </ul>
                             </li>
-
                          
                             <!--Gestion de Extras-->
                              <li class="nav-item has-treeview">
@@ -278,22 +281,22 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="<?php echo e(Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('tipodeprecio')); ?>"
+                                            class="<?php echo e(Request::path() === 'tipodeprecio' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Tipo de precio</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="<?php echo e(Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('servicio')); ?>"
+                                            class="<?php echo e(Request::path() === 'servicio' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Servicio</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/archivadas"
-                                            class="<?php echo e(Request::path() === 'notas/archivadas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('formapago')); ?>"
+                                            class="<?php echo e(Request::path() === 'formapago' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Forma de pago</p>
                                         </a>
@@ -308,15 +311,15 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="notas/todas"
-                                            class="<?php echo e(Request::path() === 'notas/todas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('inmueble')); ?>"
+                                            class="<?php echo e(Request::path() === 'inmueble' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Inmueble</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="notas/favoritas"
-                                            class="<?php echo e(Request::path() === 'notas/favoritas' ? 'nav-link active' : 'nav-link'); ?>">
+                                        <a href="<?php echo e(url('galeria')); ?>"
+                                            class="<?php echo e(Request::path() === 'galeria' ? 'nav-link active' : 'nav-link'); ?>">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Galeria</p>
                                         </a>

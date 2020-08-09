@@ -8,11 +8,8 @@ use App\Estado;
 
 class EstadoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //muestra una lista de los registros
+     
     public function index(Request $request)
     {
            $query= trim($request->get('search'));
@@ -27,22 +24,13 @@ class EstadoController extends Controller
      }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   //muestra el formulario para crear un nuevo registro
     public function create()
     {
          return view('layouts/estados/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //almacena los registros recien creados en la base de datos
     public function store(Request $request)
     {
          $datosestado=request()->except('_token');
@@ -51,38 +39,22 @@ class EstadoController extends Controller
         return redirect('estados');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   //muestra registro especificos
     public function show($Id_estado)
     {
         return view('layouts/estados/show', ['estados'=> Estado::findOrFail($Id_estado)]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //muestra el formulario con los datos a editar
     public function edit($Id_estado)
     {
          return view('layouts/estados/edit', ['estados'=> Estado::findOrFail($Id_estado)]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //actualiza un registro
     public function update(Request $request, $Id_estado)
     {
-         $estados = Estado::findOrFail($Id_estado);   
+      $estados = Estado::findOrFail($Id_estado);   
       $estados->Estado = $request->get('Estado');
 
       $estados->update();
@@ -91,12 +63,7 @@ class EstadoController extends Controller
     
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   //elimina un registro especifico de la base de datos
     public function destroy($Id_estado)
     {
         $estado= Estado::findOrFail($Id_estado);

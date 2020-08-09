@@ -2,7 +2,7 @@
 
 @section ('content')
 <div class="container">
-  <h2>coloniaes registrados <a href="{{route('colonia.create')}}"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
+  <h2>colonias registradas <a href="{{route('colonia.create')}}"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
 
  <h6>
   @if($search)
