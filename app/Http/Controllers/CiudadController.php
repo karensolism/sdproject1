@@ -23,8 +23,13 @@ class CiudadController extends Controller
         ->orderBy('id_ciudad', 'asc')
         ->get();
 
+
+         return view('ciudad', ['ciudads' =>$ciudades, 'search' => $query]);
+     }
+   
          return view('ciudades', ['ciudades' =>$ciudades, 'search' => $query]);
      }
+
 
     }
 

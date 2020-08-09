@@ -4,7 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 //ruta principal
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/', function () {
+    return view('/welcome');
+});
+
 
 Route::resource('usuarios', 'UserController')->middleware('auth');
 
@@ -27,4 +32,3 @@ Route::resource('modelo', 'ModeloController');
 Route::resource('servicio', 'ServicioController');
 Route::resource('tipodeinmueble', 'TipodeinmuebleController');
 Route::resource('tipodeprecio', 'TipodeprecioController');
-Route::resource('estados', 'EstadoController');

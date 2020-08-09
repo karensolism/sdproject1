@@ -1,0 +1,55 @@
+<style>
+
+input{
+	width: 500px;
+	padding: 5px;
+	align-items: : center;
+}
+.text{
+	border-radius: 5px;
+	border-color: #000000;
+	width: 500px;
+	padding: 5px;
+	align-content: center;
+	
+}
+.card-title{
+	font-family: bold arial;
+	size: 24px;
+
+}
+.label-text{
+	font-family: arial;
+	size: 20px;
+}
+
+.panel-body{
+	align-items: center;
+}
+
+
+button .button{
+ background: #2AD40F
+ border-radius: 2px;
+}
+
+div .row{
+	justify-content: right;
+	margin-top: 50PX;
+}
+
+.col-lg-12{
+	align-items: : right;
+	padding: 30px;
+	text-align: left;
+	margin: 0px;
+	margin-left: 110px;
+}
+
+option .list{
+ 
+}
+
+
+</style>
+
