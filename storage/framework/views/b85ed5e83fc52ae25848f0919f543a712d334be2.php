@@ -31,7 +31,7 @@
                 <form method="POST" action="<?php echo e(route('login')); ?>">
                     <?php echo csrf_field(); ?>
 
-                    <p class="login-box-msg">Inicia sesión para comenzar tu sesión</p>
+                    <p class="login-box-msg">Inicia sesión </p>
 
                     <div class="input-group mb-3">
                         <input id="email" type="email" placeholder="Email"
@@ -106,6 +106,7 @@ unset($__errorArgs, $__bag); ?>
                         <!-- /.col -->
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
+                            
                         </div>
                         <!-- /.col -->
                     </div>

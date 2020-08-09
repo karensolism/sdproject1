@@ -24,6 +24,7 @@ class CiudadController extends Controller
         ->get();
 
          return view('ciudad', ['ciudads' =>$ciudades, 'search' => $query]);
+     }
     }
 
     /**
