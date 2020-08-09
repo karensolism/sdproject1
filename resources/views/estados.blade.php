@@ -1,3 +1,6 @@
+@extends ('layouts.app')
+
+@section ('content')
 <div class="container">
   <h2>Estados registrados <a href="estados/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
 
@@ -22,15 +25,15 @@
     @foreach($estados as $estados)
     <tr>
      
-      <th scope="row">{{$estados->Id_estados}}</th>
+      <th scope="row">{{$estados->Id_estado}}</th>
       <td>{{$estados->Activo}}</td>
       <td>{{$estados->Estado}}</td>
 
       <td> 
-        <form action="{{route('estados.destroy', $estados-> Id_estados) }}" method="POST">
-          <a href="{{route('estados.show', $estados->Id_estados)}}"> <button type="button" class="btn btn-light">Ver</button></a>
+        <form action="{{route('estados.destroy', $estados->Id_estado) }}" method="POST">
+          <a href="{{route('estados.show', $estados->Id_estado)}}"> <button type="button" class="btn btn-light">Ver</button></a>
         <!--referencia al metodo del controlador-->
-        <a href="{{route('estados.edit', $estados->Id_estados)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
+        <a href="{{route('estados.edit', $estados->Id_estado)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
        <!--formulario que lleva al metodo destroy-->
           @csrf
           @method('DELETE')

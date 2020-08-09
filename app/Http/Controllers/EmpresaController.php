@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Empresa;
 
 class EmpresaController extends Controller
 {
@@ -11,9 +12,20 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+    
+       $query= trim($request->get('search'));
+      if ($request) {
+
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+        $empresa= Empresa::where('Nombre_empr', 'LIKE', '%'.$query.'%' )
+        ->orderBy('Id_empresa', 'asc')
+        ->get();
+
+         return view('empresas', ['empresas' =>$empresa, 'search' => $query]);
+        }
     }
 
     /**
@@ -23,7 +35,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+         return view('layouts/empresas/create');
     }
 
     /**
@@ -34,7 +46,10 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $datosempresa=request()->except('_token');
+        Empresa::insert($datosempresa);
+     
+        return redirect('empresas');
     }
 
     /**
@@ -43,9 +58,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($Id_empresa)
     {
-        //
+         return view('layouts/empresas/show', ['empresas'=> Empresa::findOrFail($Id_empresa)]);
     }
 
     /**
@@ -54,9 +69,9 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Id_empresa)
     {
-        //
+         return view('layouts/empresas/edit', ['empresas'=> Empresa::findOrFail($Id_empresa)]);
     }
 
     /**
@@ -66,9 +81,13 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Id_empresa)
     {
-        //
+         $empresa = Empresa::findOrFail($Id_empresa);   
+      $empresa->nombre = $request->get('Nombre_empr');
+      $empresa->correo = $request->get('Correo_empr');
+      $empresa->telefono = $request->get('Tel_empr');
+      $empresa->logo = $request->get('Logo_emp');
     }
 
     /**
@@ -77,8 +96,11 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Id_empresa)
     {
-        //
+        $empresa= Empresa::findOrFail($Id_empresa);
+        $empresa->delete();
+
+        return redirect('empresas'); 
     }
 }

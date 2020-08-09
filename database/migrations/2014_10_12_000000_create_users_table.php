@@ -28,8 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('Nombre_empr',100);  
             $table->string('Correo_empr',100);
             $table->string('Tel_empresa',15);
-            $table->string('Logo_emp',100);
-         
+            $table->binary('Logo_emp',100);
+            $table->timestamps();
           
                       
         });
@@ -41,7 +41,8 @@ class CreateUsersTable extends Migration
             $table->string('Apellido',50);
             $table->string('Correo_asesor',100);
             $table->string('Contrasenia',20);     //pregunta: ¿debemos quitar esta contraseña porque se supone que tiene un usuario, donde esta su conraseña? no debería tener dos   
-            $table->string('Telefono',15);                        
+            $table->string('Telefono',15);    
+            $table->timestamps();                    
                 
             $table->unsignedBigInteger('Id_usuariofk'); // Relación con usuarios
             $table->foreign('Id_usuariofk')->references('id')->on('users'); // clave foranea
@@ -57,12 +58,15 @@ class CreateUsersTable extends Migration
             $table->integer('Activo');
             $table->string('Estado',200);    
 
+            $table->timestamps();   
+
         });
 
         Schema::create('ciudads', function (Blueprint $table) {
             $table->id('id_ciudad');
             $table->integer('Activo');
-            $table->string('Ciudad',200);
+            $table->string('Ciudad',200);  
+            $table->timestamps();   
              
 
             $table->unsignedBigInteger('Id_estadofk'); // Relación con estados
@@ -75,7 +79,7 @@ class CreateUsersTable extends Migration
             $table->id('Id_colonia');
             $table->integer('Activo');
             $table->string('colonia',200);
-              
+            $table->timestamps();  
  
             $table->unsignedBigInteger('id_ciudadfk'); // Relación con ciudads
             $table->foreign('id_ciudadfk')->references('id_ciudad')->on('ciudads'); // clave foranea
@@ -89,16 +93,17 @@ class CreateUsersTable extends Migration
             $table->string('Nombre_desa',100);
             $table->string('Correo',100);
             $table->string('Tel_desa',15);
-            $table->string('Logo',100);
+            $table->binary('Logo',100);
+            $table->timestamps();  
 
-                
-
+            
         });
 
         Schema::create('tipoinmuebles', function (Blueprint $table) {
             $table->id('Id_tipo');
             $table->integer('Activo');
             $table->string('Tipo_inmueble',100);
+            $table->timestamps();  
            
              $table->unsignedBigInteger('Id_desarrolladorafk'); // Relación con desarrolladoras
             $table->foreign('Id_desarrolladorafk')->references('Id_desarrolladora')->on('desarrolladoras'); // clave foranea
@@ -111,6 +116,7 @@ class CreateUsersTable extends Migration
             $table->id('Id_modelo');
             $table->integer('Activo');
             $table->string('Modelo',100);
+            $table->timestamps();  
 
             $table->unsignedBigInteger('Id_tipofk'); // Relación con tipo_inmbuebles
             $table->foreign('Id_tipofk')->references('Id_tipo')->on('tipoinmuebles'); // clave foranea     
@@ -125,6 +131,7 @@ class CreateUsersTable extends Migration
             $table->string('Tseminuevo',20);
             $table->string('contrato',35);
             $table->string('fecha',25);
+            $table->timestamps();  
            
         });
         
@@ -134,6 +141,7 @@ class CreateUsersTable extends Migration
             $table->integer('Activo');
             $table->string('Producto',10);
             $table->unsignedBigInteger('id_seminuevofk'); // Relación con seminuevos
+            $table->timestamps();  
             $table->foreign('id_seminuevofk')->references('id_seminuevo')->on('seminuevos'); // clave foranea
           
 
@@ -143,7 +151,8 @@ class CreateUsersTable extends Migration
 
             $table->id('id_tipoPrecio');
             $table->integer('Activo');
-            $table->string('Tipo',20);            
+            $table->string('Tipo',20);   
+            $table->timestamps();           
 
         });
 
@@ -164,6 +173,7 @@ class CreateUsersTable extends Migration
             $table->date('Fecha_entrega');
             $table->string('Planta',250);
             $table->string('Equipamiento',500);  
+            $table->timestamps();  
 
             $table->unsignedBigInteger('Id_asesorfk'); // Relación con tipoprecios
             $table->foreign('Id_asesorfk')->references('Id_asesor')->on('asesors'); 
@@ -186,6 +196,7 @@ class CreateUsersTable extends Migration
             $table->id('Id_forma');
             $table->integer('Activo');
             $table->string('forma',20);
+            $table->timestamps();  
           
         });
 
@@ -208,7 +219,8 @@ class CreateUsersTable extends Migration
             $table->string('Correo',100);
             $table->string('Telefono',20);
             $table->string('Estatus',10);
-            $table->string('Mensaje',500);           
+            $table->string('Mensaje',500);   
+            $table->timestamps();  
   $table->unsignedBigInteger('Id_inmmueblefk1'); // Relación con forma_pagos
             $table->foreign('Id_inmmueblefk1')->references('Id_inmmueble')->on('inmuebles'); // clave foranea             
 
@@ -217,7 +229,8 @@ class CreateUsersTable extends Migration
         Schema::create('galerias', function (Blueprint $table) {        
             $table->id('Id_foto');
             $table->integer('Activo');
-            $table->string('Foto',200);
+            $table->binary('Foto',200);
+            $table->timestamps();  
 
             $table->unsignedBigInteger('Id_inmmueblefk2'); // Relación con forma_pagos
             $table->foreign('Id_inmmueblefk2')->references('Id_inmmueble')->on('inmuebles'); // clave foranea  
@@ -230,6 +243,7 @@ class CreateUsersTable extends Migration
             $table->id('Id_servicio');
             $table->integer('Activo');
             $table->string('Servicio',18);
+            $table->timestamps();  
             
 
         });

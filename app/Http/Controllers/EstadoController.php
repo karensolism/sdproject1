@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Estado;
 
 
 class EstadoController extends Controller
@@ -12,9 +13,18 @@ class EstadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('estados');
+           $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+        $estado= Estado::where('estado', 'LIKE', '%'.$query.'%' )
+        ->orderBy('Id_estado', 'asc')
+        ->get();
+
+         return view('estados', ['estados' =>$estado, 'search' => $query]);
+     }
     }
 
     /**
@@ -24,7 +34,7 @@ class EstadoController extends Controller
      */
     public function create()
     {
-        //
+         return view('layouts/estados/create');
     }
 
     /**
@@ -35,7 +45,10 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $datosestado=request()->except('_token');
+        Estado::insert($datosestado);
+     
+        return redirect('estados');
     }
 
     /**
@@ -44,9 +57,9 @@ class EstadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($Id_estado)
     {
-        //
+        return view('layouts/estados/show', ['estados'=> Estado::findOrFail($Id_estado)]);
     }
 
     /**
@@ -55,9 +68,9 @@ class EstadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Id_estado)
     {
-        //
+         return view('layouts/estados/edit', ['estados'=> Estado::findOrFail($Id_estado)]);
     }
 
     /**
@@ -67,9 +80,15 @@ class EstadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Id_estado)
     {
-        //
+         $estados = Estado::findOrFail($Id_estado);   
+      $estados->Estado = $request->get('Estado');
+
+      $estados->update();
+
+      return redirect('estados'); 
+    
     }
 
     /**
@@ -78,8 +97,11 @@ class EstadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Id_estado)
     {
-        //
+        $estado= Estado::findOrFail($Id_estado);
+        $estado->delete();
+
+        return redirect('estados'); 
     }
 }

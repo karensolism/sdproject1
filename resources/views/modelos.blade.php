@@ -2,7 +2,7 @@
 
 @section ('content')
 <div class="container">
-  <h2>Asesores registrados <a href="usuarios/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
+  <h2>Modelos registrados <a href="{{route('modelo.create')}}"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
 
  <h6>
   @if($search)
@@ -16,23 +16,22 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nombre</th>
- 
+      <th scope="col">Modelo</th>
      
     </tr>
   </thead>
   <tbody>
-    @foreach($asesor as $asesor)
+    @foreach($modelos as $mod)
     <tr>
      
-      <th scope="row">{{$asesor->Id_asesor}}</th>
-      <td>{{$asesor->Nombre}}</td>
+      <th scope="row">{{$mod->Id_modelo}}</th>
+      <td>{{$mod->Modelo}}</td>
 
       <td> 
-        <form action="{{ route('asesor.destroy', $asesor->Id_asesor) }}" method="POST">
-          <a href="{{route('asesor.show', $asesor->Id_asesor)}}"> <button type="button" class="btn btn-light">Ver</button></a>
+        <form action="{{ route('modelo.destroy', $mod->Id_modelo) }}" method="POST">
+          <a href="{{route('modelo.show', $mod->Id_modelo)}}"> <button type="button" class="btn btn-light">Ver</button></a>
         <!--referencia al metodo del controlador-->
-        <a href="{{route('asesor.edit', $asesor->Id_asesor)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
+        <a href="{{route('modelo.edit', $mod->Id_modelo)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
        <!--formulario que lleva al metodo destroy-->
           @csrf
           @method('DELETE')

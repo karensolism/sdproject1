@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Modelo;
 
 class ModeloController extends Controller
 {
@@ -11,9 +12,18 @@ class ModeloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+           $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+       $Modelo= Modelo::where('Modelo', 'LIKE', '%'.$query.'%' )
+        ->orderBy('Id_Modelo', 'asc')
+        ->get();
+
+         return view('modelos', ['modelos' =>$Modelo, 'search' => $query]);
+     }
     }
 
     /**
@@ -21,9 +31,9 @@ class ModeloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   public function create()
     {
-        //
+         return view('layouts/modelos/create');
     }
 
     /**
@@ -34,7 +44,10 @@ class ModeloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datosmodelos=request()->except('_token');
+        Modelo::insert($datosmodelos);
+     
+        return redirect('modelos');
     }
 
     /**
@@ -43,9 +56,9 @@ class ModeloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($Id_modelo)
     {
-        //
+       return view('layouts/modelos/show', ['modelos'=> Modelo::findOrFail($Id_modelo)]);
     }
 
     /**
@@ -54,9 +67,9 @@ class ModeloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Id_modelo)
     {
-        //
+        return view('layouts/modelos/edit', ['modelos'=> Modelo::findOrFail($Id_modelo)]);
     }
 
     /**
@@ -66,9 +79,11 @@ class ModeloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Id_modelo)
     {
-        //
+      $Modelo = Modelo::findOrFail($Id_modelo);   
+      $Modelo->Modelo = $request->get('Modelo');
+    
     }
 
     /**
@@ -77,8 +92,11 @@ class ModeloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Id_Modelo)
     {
-        //
+        $Modelo= Modelo::findOrFail($Id_modelo);
+        $Modelo->delete();
+
+        return redirect('modelos'); 
     }
 }

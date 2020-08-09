@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Servicio;
 
 class ServicioController extends Controller
 {
@@ -11,9 +12,18 @@ class ServicioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+           $query= trim($request->get('search'));
+      if ($request) {
+
+        //busca usuario con like se dice que sea igual a lo que se escribe en el form ya sea al principio o al final
+        $Servicio= Servicio::where('Servicio', 'LIKE', '%'.$query.'%' )
+        ->orderBy('Id_servicio', 'asc')
+        ->get();
+
+         return view('Servicios', ['Servicios' =>$Servicio, 'search' => $query]);
+     }
     }
 
     /**
@@ -23,7 +33,7 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        //
+         return view('layouts/servicios/create');
     }
 
     /**
@@ -34,7 +44,10 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datoservicio=request()->except('_token');
+        Servicio::insert($datoservicio);
+     
+        return redirect('servicios');
     }
 
     /**
@@ -43,9 +56,9 @@ class ServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($Id_servicio)
     {
-        //
+       return view('layouts/servicios/show', ['servicios'=> Servicio::findOrFail($Id_servicio)]);
     }
 
     /**
@@ -54,9 +67,9 @@ class ServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($Id_servicio)
     {
-        //
+        return view('layouts/servicios/edit', ['servicios'=> Servicio::findOrFail($Id_servicio)]);
     }
 
     /**
@@ -66,9 +79,10 @@ class ServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $Id_servicio)
     {
-        //
+      $Servicio = Servicio::findOrFail($Id_servicio);   
+      $Servicio->Servicio = $request->get('Servicio');
     }
 
     /**
@@ -77,8 +91,11 @@ class ServicioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($Id_servicio)
     {
-        //
+        $Servicio= Servicio::findOrFail($Id_servicio);
+        $Servicio->delete();
+
+        return redirect('servicios'); 
     }
 }

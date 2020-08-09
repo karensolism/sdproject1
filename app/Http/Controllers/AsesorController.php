@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserFormRequest;
 use App\Asesor;
 
 class AsesorController extends Controller
@@ -12,7 +13,7 @@ class AsesorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //search es el nombre del navbar en app.blade
       $query= trim($request->get('search'));
@@ -23,7 +24,8 @@ class AsesorController extends Controller
         ->orderBy('Id_asesor', 'asc')
         ->get();
 
-         return view('asesores', ['asesors' =>$asesores, 'search' => $query]);
+         return view('asesores', ['asesor' =>$asesores, 'search' => $query]);
+     }
     }
 
     /**

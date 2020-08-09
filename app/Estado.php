@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Estado extends Model
 {
     
-
+protected $primaryKey='Id_estado';
     /**
      * The attributes that are mass assignable.
      *
