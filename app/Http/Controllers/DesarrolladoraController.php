@@ -24,7 +24,7 @@ class DesarrolladoraController extends Controller
         ->get();
 
          return view('desarrolladoras', ['desarrolladoras' =>$desarrolladora, 'search' => $query]);
-     }
+         }
     }
 
     /**
@@ -46,9 +46,13 @@ class DesarrolladoraController extends Controller
     public function store(Request $request)
     {
         $datosdesa=request()->except('_token');
+          if($request->hasFile('Logo'))
+        {
+            $datosdesa['Logo'] = $request->file('Logo')->store('uploads', 'public');
+        }
         Desarrolladora::insert($datosdesa);
      
-        return redirect('desarrolladoras');
+        return redirect('desarrolladora');
     }
 
     /**
@@ -82,11 +86,14 @@ class DesarrolladoraController extends Controller
      */
     public function update(Request $request, $Id_desarrolladora)
     {
-      $desarrolladora = Desarrolladora::findOrFail($Id_asesor);   
-      $desarrolladora->nombre = $request->get('Nombre_desa');
-      $desarrolladora->correo = $request->get('correo');
-      $desarrolladora->telefono = $request->get('Tel_desa');
-      $desarrolladora->correo = $request->get('correo');
+      $desarrolladora = Desarrolladora::findOrFail($Id_desarrolladora);   
+      $desarrolladora->Nombre_desa = $request->get('Nombre_desa');
+      $desarrolladora->Correo = $request->get('Correo');
+      $desarrolladora->Tel_desa = $request->get('Tel_desa');
+      $desarrolladora->Logo = $request->get('Logo');
+       $desarrolladora->update();
+
+      return redirect('desarrolladora');
     
     }
 
@@ -96,11 +103,11 @@ class DesarrolladoraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_ciudad)
+    public function destroy($Id_desarrolladora)
     {
-        $ciudad= Ciudad::findOrFail($id_ciudad);
-        $ciudad->delete();
+        $desa= Desarrolladora::findOrFail($Id_desarrolladora);
+        $desa->delete();
 
-        return redirect('ciudad'); 
+        return redirect('desarrolladora'); 
     }
 }

@@ -45,15 +45,12 @@ class GaleriaController extends Controller
     public function store(Request $request)
     {
         $datosgaleria=request()->except('_token');
-        Galeria::insert($datosgaleria);
-
-        if($request->hasFile('Foto'))
+          if($request->hasFile('Foto'))
         {
-            $datosgaleria['Foto'] = $request->file('Foto')->store('uploads/galeria', 'public');
+            $datosgaleria['Foto'] = $request->file('Foto')->store('uploads', 'public');
         }
-     
-        return redirect('
-            galeria');
+        Galeria::insert($datosgaleria);
+        return redirect('galeria');
     }
 
     /**

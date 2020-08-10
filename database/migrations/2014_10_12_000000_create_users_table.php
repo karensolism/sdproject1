@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('Nombre_empr',100);  
             $table->string('Correo_empr',100);
             $table->string('Tel_empresa',15);
-            $table->binary('Logo_emp',100);
+            $table->string('Logo_emp',100);
             $table->timestamps();
           
                       
@@ -93,7 +93,7 @@ class CreateUsersTable extends Migration
             $table->string('Nombre_desa',100);
             $table->string('Correo',100);
             $table->string('Tel_desa',15);
-            $table->binary('Logo',100);
+            $table->string('Logo');
             $table->timestamps();  
 
             
@@ -140,8 +140,8 @@ class CreateUsersTable extends Migration
            $table->id('id_producto');
             $table->integer('Activo');
             $table->string('Producto',10);
-            $table->unsignedBigInteger('id_seminuevofk'); // Relación con seminuevos
             $table->timestamps();  
+            $table->unsignedBigInteger('id_seminuevofk'); // Relación con seminuevos
             $table->foreign('id_seminuevofk')->references('id_seminuevo')->on('seminuevos'); // clave foranea
           
 
@@ -229,7 +229,7 @@ class CreateUsersTable extends Migration
         Schema::create('galerias', function (Blueprint $table) {        
             $table->id('Id_foto');
             $table->integer('Activo');
-            $table->binary('Foto',200);
+            $table->string('Foto',200);
             $table->timestamps();  
 
             $table->unsignedBigInteger('Id_inmmueblefk2'); // Relación con forma_pagos

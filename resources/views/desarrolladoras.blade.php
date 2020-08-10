@@ -2,7 +2,7 @@
 
 @section ('content')
 <div class="container">
-  <h2>Asesores registrados <a href="usuarios/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
+  <h2>Asesores registrados <a href="desarrolladora/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
 
  <h6>
   @if($search)
@@ -17,28 +17,28 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
       <th scope="col">Correo</th>
       <th scope="col">Teléfono</th>
+      <th scope="col">Logo</th>
        <th scope="col">Opciones</th>
      
     </tr>
   </thead>
   <tbody>
-    @foreach($asesor as $asesor)
+    @foreach($desarrolladoras  as $desarrolladoras)
     <tr>
      
-      <th scope="row">{{$asesor->Id_asesor}}</th>
-      <td>{{$asesor->Nombre}}</td>
-      <td>{{$asesor->Apellido}}</td>
-      <td>{{$asesor->Correo_Asesor}}</td>
-      <td>{{$asesor->Telefono}}</td>
+      <th scope="row">{{$desarrolladoras->Id_desarrolladora}}</th>
+      <td>{{$desarrolladoras->Nombre_desa}}</td>
+      <td>{{$desarrolladoras->Correo}}</td>
+      <td>{{$desarrolladoras->Tel_desa}}</td>
+      <td>{{$desarrolladoras->Logo}}</td>
 
       <td> 
-        <form action="{{ route('asesor.destroy', $asesor->Id_asesor) }}" method="POST">
-          <a href="{{route('asesor.show', $asesor->Id_asesor)}}"> <button type="button" class="btn btn-light">Ver</button></a>
+        <form action="{{ route('desarrolladora.destroy', $desarrolladoras->Id_desarrolladora) }}" method="POST">
+          <a href="{{route('desarrolladora.show', $desarrolladoras->Id_desarrolladora)}}"> <button type="button" class="btn btn-light">Ver</button></a>
         <!--referencia al metodo del controlador-->
-        <a href="{{route('asesor.edit', $asesor->Id_asesor)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
+        <a href="{{route('desarrolladora.edit', $desarrolladoras->Id_desarrolladora)}}"> <button type="button" class="btn btn-primary">Editar</button></a>
        <!--formulario que lleva al metodo destroy-->
           @csrf
           @method('DELETE')
