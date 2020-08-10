@@ -180,8 +180,6 @@ class CreateUsersTable extends Migration
 
             $table->unsignedBigInteger('id_preciofk'); // Relación con tipoprecios
             $table->foreign('id_preciofk')->references('id_tipoPrecio')->on('tipoprecios'); 
-            $table->unsignedBigInteger('id_productofk'); // Relación con tipoprecios
-            $table->foreign('id_productofk')->references('id_producto')->on('caracteristicas'); 
             $table->unsignedBigInteger('id_modelofk'); // Relación con tipoprecios
             $table->foreign('id_modelofk')->references('id_modelo')->on('modelos'); 
 

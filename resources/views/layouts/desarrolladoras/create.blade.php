@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">    
-<form action="{{route('usuarios.store')}}" method="POST">
+<form action="{{route('desarrolladora.store')}}" method="POST">
 {{csrf_field()}}
 
 <div class="form-group">
