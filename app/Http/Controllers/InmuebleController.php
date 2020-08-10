@@ -47,7 +47,7 @@ class InmuebleController extends Controller
         $datosdesa=request()->except('_token');
         Inmueble::insert($datosdesa);
      
-        return redirect('inmuebles');
+        // return redirect('inmuebles');
     }
 
     /**
