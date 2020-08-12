@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Inmueble;
+use App\Asesor;
+use App\Tipoprecio;
+use App\Modelo;
+use App\Colonia;
 
 class InmuebleController extends Controller
 {
@@ -32,7 +36,12 @@ class InmuebleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
+       
+        $Inmueble ['tipoprecios']=Tipoprecio::paginate(5);
+        $Inmueble ['modelos']=Modelo::paginate(5);
+        $Inmueble ['colonias']=Colonia::paginate(5);
          return view('layouts/inmuebles/create');
     }
 
@@ -46,7 +55,6 @@ class InmuebleController extends Controller
     {
         $datosdesa=request()->except('_token');
         Inmueble::insert($datosdesa);
-     
         return redirect('inmuebles');
     }
 
