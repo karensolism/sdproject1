@@ -334,7 +334,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
                             <div class="search">
 
-                                <!--div class="col-md-2 col-sm-4 col-xs-4 nopad padding">
+                                <div class="col-md-2 col-sm-2 col-xs-2 nopad padding">
                                     <select>
                                         <option value="Propety Type">Tipo de inmueble</option>
                                         <option value="Option 2">Option 2</option>
@@ -342,14 +342,13 @@
                                         <option value="Option 4">Option 4</option>
                                         <option value="Option 5">Option 5</option>
                                     </select>
-                                </div-->
+                                </div>
 
-                                <div class="col-md-10 col-sm-10 col-xs-10 nopad padding">                              
+                                <div class="col-md-8 col-sm-8 col-xs-8 nopad padding">                              
                                     <input type="text" id="barra-busqueda"  placeholder="Buscar por ubicación / zona " name="barra-busqueda">
                                 </div>
-                             
 
-                                <div class="col-md-2 col-sm-4 col-xs-4 nopad padding">
+                                <div class="col-md-2 col-sm-2 col-xs-2 nopad padding">
                                     <button type="button" class="btn-1 bg1">
                                         <span><i class="fa fa-search"></i> Buscar</span>
                                     </button>
